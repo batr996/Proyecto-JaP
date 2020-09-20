@@ -21,8 +21,19 @@ function showProductInfo(info) {
                         <dt>Cantidad de vendidos</dt>
                         <dd><p>` + info.soldCount + `</p></dd>
                         <dt>Imágenes ilustrativas</dt>
-                        <div class="row" id="images">
-                        </div><br>
+                        <div class="container col-md-8">
+                        <div class="carousel slide" id="carousel" data-ride="carousel">
+                        <div class="carousel-inner" id="images">
+                        </div>
+                        <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                        </a>
+                        </div></div><br>
                         <dt>Productos relacionados</dt>
                         <hr class="my-3">
                         <div class="row" id="related">
@@ -55,8 +66,10 @@ function showProductInfo(info) {
 
 function showImages(info) {
     info.images.forEach(element => {
-        document.getElementById("images").innerHTML += ` <img class="col-md-4 col-lg-3 h-100 img-fluid img-thumbnail" src="` + element + `" alt=""> `
+        document.getElementById("images").innerHTML += ` <div class="carousel-item">
+        <img src="` + element + `" class="img-thumbnail img-fluid d-block w-100" alt="..."></div> `
     })
+    document.getElementsByClassName("carousel-item")[0].setAttribute("class", "carousel-item active");
 };
 
 function showRelatedProducts(info) {
@@ -97,7 +110,7 @@ function showComments() {
         if (resultObj.status === "ok") {
             commentsArray = resultObj.data;
 
-            if (localStorage.getItem('newComment')){
+            if (localStorage.getItem('newComment')) {
                 let sentComment = JSON.parse(localStorage.getItem('newComment'))
                 commentsArray.push(sentComment)
             }
