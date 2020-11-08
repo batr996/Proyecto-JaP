@@ -43,18 +43,13 @@ function showProductsList(currentProductsArray) {
             ((maxPrice == undefined) || (maxPrice != undefined && parseInt(product.cost) <= maxPrice))) {
 
             htmlContentToAppend += `
-            <a href="product-info.html" class="list-group-item list-group-item-action">
-                <div class="row">
-                    <div class="col-3">
-                        <img src="` + product.imgSrc + `" alt="` + product.description + `" class="img-thumbnail">
-                    </div>
-                    <div class="col">
-                        <div class="d-flex w-100 justify-content-between">
-                            <h4 class="mb-1">`+ product.name + ` - ` + product.currency + ` ` + product.cost + `</h4>
-                            <small class="text-muted">` + product.soldCount + ` artículos</small>
-                        </div>
-                        <p class="mb-1">` + product.description + `</p>
-                    </div>
+            <a href="product-info.html" class="list-group-item list-group-item-action col-12 col-sm-6 col-md-3">
+                <div class="card mb-4 shadow-sm custom-card">
+                        <img src="` + product.imgSrc + `" alt="` + product.description + `" class="bd-placeholder-img card-img-top">
+                        <h3 class="m-3">` + product.name + `</h3>
+                        <div class="card-body"><p class="card-text">`+ product.description + `</p></div>
+                        <div class="card-footer"><h4>` + product.currency + ` ` + product.cost + `</h4>
+                        <small class="text-muted">` + product.soldCount + ` artículos</small></div>
                 </div>
             </a>
             `
